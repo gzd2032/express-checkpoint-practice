@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       host: '127.0.0.1',
       port: 5432,
@@ -25,25 +25,19 @@ module.exports = {
   },
 
   test: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       host: '127.0.0.1',
       port: 5432,
-      database: 'my_movies',
+      database: 'test_db',
       user:     'postgres',
       password: 'docker'
     },
-    useNullAsDefault: true, 
-    migrations: {
-      directory: path.join(__dirname, "migrations")
-    },
-    seeds: {
-      directory: path.join(__dirname, "seeds")
-    }
+    useNullAsDefault: true
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: 'my_db',
       user:     'username',

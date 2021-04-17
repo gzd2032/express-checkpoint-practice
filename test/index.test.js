@@ -1,17 +1,17 @@
 const app = require('../app');
 const request = require('supertest')(app);
-const { db, dropDatabase } = require('../db/db.js');
+const { db, setupDatabase, dropDatabase } = require('../db/db.js');
 
 describe('Test /movies endpoint', () => {
 
     beforeAll(async () => {
         // run the migrations and do any other setup here
-        await db.migrate.latest()
+        await setupDatabase();
     });
 
     afterAll( async (done) => {
-        await dropDatabase()
-        done()
+        await dropDatabase();
+        done();
      });
 
     it('should return a list of movies', async () => {
